@@ -3,8 +3,9 @@ name: mobioff
 services:
   backend:
     build: ./backend
+    restart: unless-stopped
     ports:
-      - '${MOBIOFF_API_PORT:-18080}:8080'
+      - '127.0.0.1:${MOBIOFF_API_PORT:-18080}:8080'
     healthcheck:
       test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://127.0.0.1:8080/api/interventions']
       interval: 5s
@@ -13,8 +14,9 @@ services:
       start_period: 15s
   frontend:
     build: ./frontend
+    restart: unless-stopped
     ports:
-      - '${MOBIOFF_FRONTEND_PORT:-4300}:80'
+      - '127.0.0.1:${MOBIOFF_FRONTEND_PORT:-4300}:80'
     depends_on:
       backend:
         condition: service_healthy
