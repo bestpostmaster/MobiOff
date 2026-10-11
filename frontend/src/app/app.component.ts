@@ -10,7 +10,7 @@ import { SyncService } from './core/services/sync.service';
       <header class="topbar">
         <a routerLink="/" class="brand" aria-label="MobiOff Demo, accueil"
           ><span class="brand-icon">⌖</span
-          ><span>MobiOff <em>Demo</em><small>Interventions terrain</small></span></a
+          ><span>MobiOff <em>Demo</em><small>By Mohamed M.SALEM</small></span></a
         ><span class="connection" [class.offline]="!sync.api.online()"
           ><span class="dot"></span>{{ sync.api.online() ? 'En ligne' : 'Hors connexion' }}</span
         >
