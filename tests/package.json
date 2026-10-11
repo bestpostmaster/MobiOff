@@ -1,0 +1,11 @@
+{
+  "name": "mobioff-demo-e2e",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:docker": "node docker-outage.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.0"
+  }
+}

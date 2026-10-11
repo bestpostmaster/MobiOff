@@ -1,0 +1,25 @@
+name: mobioff
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - '${MOBIOFF_API_PORT:-18080}:8080'
+    healthcheck:
+      test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://127.0.0.1:8080/api/interventions']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 15s
+  frontend:
+    build: ./frontend
+    ports:
+      - '${MOBIOFF_FRONTEND_PORT:-4300}:80'
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://127.0.0.1/']
+      interval: 10s
+      timeout: 3s
+      retries: 5
