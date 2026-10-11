@@ -13,12 +13,14 @@
             "tsConfig": "tsconfig.app.json",
             "index": "src/index.html",
             "styles": ["src/styles.css"],
+            "assets": [{ "glob": "**/*", "input": "public" }],
             "outputPath": "dist/mobioff",
             "webWorkerTsConfig": "tsconfig.worker.json"
           },
           "configurations": {
             "production": {
               "outputHashing": "all",
+              "serviceWorker": "ngsw-config.json",
               "budgets": [
                 {
                   "type": "initial",
